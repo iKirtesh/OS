@@ -1,0 +1,108 @@
+NAME :  
+SEAT NO :
+
+Assignment no 4:
+B. Thread synchronization and mutual exclusion using mutex.
+Application to demonstrate: Reader-
+Writer problem with reader priority.
+
+# include<pthread.h>
+# include<semaphore.h>
+# include<stdio.h>
+
+int readcount,writecount;
+sem_t wsem,rsem;
+void *reader(void *i)
+{
+	int j;
+	j=(int) i;
+	sem_wait(&rsem);
+	readcount++;
+	printf("readcount=%d for reader=%d",readcount,j);
+	if(readcount==1)
+		sem_wait(&wsem);
+	sem_post(&rsem);
+	printf("\n i am %d reader in critical section",j);
+	sleep(16);
+	printf("\n i am %d reader exiting critical section",j);
+	readcount--;
+	if(readcount==0)
+		sem_post(&wsem);
+	pthread_exit(NULL);
+}
+void *writer(void *i)
+{
+	int k;
+	k=(int) i;
+	writecount++;
+	if(writecount==1)
+		sem_wait(&rsem);
+	sem_wait(&wsem);
+	printf("\n i am %d writer in critical section",k);	
+	sleep(6);
+	printf("\n i am %d writer exiting critical section",k);
+	sem_post(&wsem);
+	writecount--;
+	if(writecount==0)
+		sem_post(&rsem);
+}
+int main()
+{
+
+	pthread_t thread[10];
+
+	int i=1,k=1;
+	char ch;
+	writecount=0;
+	readcount=0;	
+    	sem_init(&rsem,0,1);
+	 sem_init(&wsem,0,1);
+	printf("\n Enter reader: r  or writer: w or exit : x");
+	scanf("\n%c",&ch);
+	
+	while(1)
+	{
+	switch(ch)
+	{
+		case 'r' : pthread_create(&thread[i], NULL,reader ,(void *)i);
+			   i++;
+			   break;
+		case 'w' : pthread_create(&thread[i], NULL,writer, (void *)k);
+			   k++;
+			   break;
+		default :  pthread_exit(NULL);
+	}
+	
+	printf("\n do u want to continue (r,w,x)");
+	scanf("\n%c",&ch);
+				
+	}
+}
+
+
+
+OUTPUT
+
+Enter reader: r  or writer: w or exit : x
+w
+
+ do u want to continue (r,w,x)
+ i am 1 writer in critical section
+r
+ i am 1 writer exiting critical section
+ do u want to continue (r,w,x)readcount=1 for reader=1
+ i am 1 reader in critical section
+r
+ i am 1 reader exiting critical section
+ do u want to continue (r,w,x)readcount=1 for reader=2
+ i am 2 reader in critical section
+r
+ i am 2 reader exiting critical section
+ do u want to continue (r,w,x)readcount=1 for reader=3
+ i am 3 reader in critical section
+r
+ i am 3 reader exiting critical section
+ do u want to continue (r,w,x)readcount=1 for reader=4
+ i am 4 reader in critical section
+x
+ i am 4 reader exiting critical section

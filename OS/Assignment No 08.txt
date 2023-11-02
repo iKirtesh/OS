@@ -1,0 +1,167 @@
+Name :
+Roll No. :
+
+Assignemnt No. 08
+Title :Implement the C program for Page Replacement Algorithms: 
+FCFS for frame size as minimum three. 
+ 
+#include<stdio.h>
+
+void menu()
+{
+
+	printf("PAGE REPLACEMENT ALGORITHMS");
+	
+	printf("FIRST IN FIRST OUT");
+}
+
+void accept(int ref[],int n)
+{
+	int i;
+	printf("\nENTER ELEMENT OF REFERENCE STRING ONE BY ONE::");
+	for(i=0;i<n;i++)
+	{
+		scanf("%d",&ref[i]);
+	}
+}
+
+void display(int ref[],int n)
+{
+	int i;
+	
+	for(i=0;i<n;i++)
+	{
+		printf("%3d  ",ref[i]);
+	}
+}
+
+int search(int frame[],int x,int fs)
+{
+	int i;
+	for(i=0;i<fs;i++)
+	{
+		if(frame[i]==x)
+			return 1;
+	}
+	return 0;
+}
+
+void fifo(int ref[],int n)
+{
+	int frame[10];
+	int i,k,fs,temp,cnt;
+	printf("\n\nENTER FRAME SIZE::");
+	scanf("%d",&temp);
+
+	cnt=k=fs=0;
+
+	for(i=0;i<n;i++)
+	{
+		if(search(frame,ref[i],fs)==0)
+		{
+			frame[k]=ref[i];
+			k=(k+1)%temp;
+			cnt++;
+			if(cnt<temp)
+				fs=cnt;
+			else
+				fs=temp;
+			printf("\n\nFOR PAGE %d ::\t",ref[i]);
+			display(frame,fs);
+		}
+		else
+		{
+			printf("\n\nFOR PAGE %d ::\t",ref[i]);
+			printf("  NO PAGE FAULT");
+		}
+	}
+	printf("\n\nTOTAL NO. OF PAGE FAULTS = %d ",cnt);
+}
+
+
+int main()
+{
+	int ref[50],n,ch;
+	
+	printf("ENTER SIZE OF REFERENCE STRING::");
+	scanf("%d",&n);
+	accept(ref,n);
+
+		printf("YOUR ENTERED REFERENCE STRING IS::");
+		display(ref,n);
+		fifo(ref,n);
+		
+return(0);
+}
+
+OUTPUT :
+
+ENTER SIZE OF REFERENCE STRING::20
+
+ENTER ELEMENT OF REFERENCE STRING ONE BY ONE::0
+0
+1
+2
+0
+3
+0
+4
+2
+3
+0
+3
+2
+1
+2
+0
+1
+7
+0
+1
+YOUR ENTERED REFERENCE STRING IS::  0    0    1    2    0    3    0    4    2    3    0    3    2    1    2    0    1    7    0    1
+
+ENTER FRAME SIZE::3
+
+
+FOR PAGE 0 ::     0
+
+FOR PAGE 0 ::     NO PAGE FAULT
+
+FOR PAGE 1 ::     0    1
+
+FOR PAGE 2 ::     0    1    2
+
+FOR PAGE 0 ::     NO PAGE FAULT
+
+FOR PAGE 3 ::     3    1    2
+
+FOR PAGE 0 ::     3    0    2
+
+FOR PAGE 4 ::     3    0    4
+
+FOR PAGE 2 ::     2    0    4
+
+FOR PAGE 3 ::     2    3    4
+
+FOR PAGE 0 ::     2    3    0
+
+FOR PAGE 3 ::     NO PAGE FAULT
+
+FOR PAGE 2 ::     NO PAGE FAULT
+
+FOR PAGE 1 ::     1    3    0
+
+FOR PAGE 2 ::     1    2    0
+
+FOR PAGE 0 ::     NO PAGE FAULT
+
+FOR PAGE 1 ::     NO PAGE FAULT
+
+FOR PAGE 7 ::     1    2    7
+
+FOR PAGE 0 ::     0    2    7
+
+FOR PAGE 1 ::     0    1    7
+
+TOTAL NO. OF PAGE FAULTS = 14
+

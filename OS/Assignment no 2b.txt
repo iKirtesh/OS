@@ -1,0 +1,130 @@
+NAME :  Saurabh Kulkarni
+SEAT NO :
+
+Assignment no 2:
+
+Process control system calls: The demonstration of FORK, EXECVE
+and WAIT system calls along
+with zombie and orphan states.
+
+B. Implement the C program in which main program accepts an array.
+Main program uses the FORK
+system call to create a new process called a child process. Parent
+process sorts an array and passes the
+sorted array to child process through the command line arguments of
+EXECVE system call. The child
+process uses EXECVE system call to load new program which display
+array in reverse order.
+
+#include<stdio.h>
+#include<unistd.h>
+#include<sys/wait.h>
+int asc()
+{
+	int i,a[10],k,temp,n;
+	printf("\nEnter the no of Array elements");
+	scanf("%d",&n);
+
+	printf("\nEnter the Array Elements");
+	
+	for(i=0;i<n;i++)
+	{
+		scanf("%d",&a[i]);
+	}
+	for(i=0;i<n;i++)
+	{
+		for(k=0;k<n-1;k++)
+		{
+			if(a[i]<a[k])
+			{
+			 temp=a[k];
+			 a[k]=a[i];
+			 a[i]=temp;
+			}
+		}
+
+	}
+printf("\nThe Sorted array in ascending order is :\n");
+for(i=0;i<n;i++)
+{
+	printf(" %d ",a[i]);
+}
+return 0;
+}
+
+int dsc()
+{
+        int i,a[10],k,temp,n;
+        printf("\nEnter the no of Array elements\n");
+        scanf("%d",&n);
+
+        printf("\nEnter the Array Elements\n");
+
+        for(i=0;i<n;i++)
+        {
+                scanf("%d",&a[i]);
+        }
+        for(i=0;i<n;i++)
+        {
+                for(k=0;k<n-1;k++)
+                {
+                        if(a[i]>a[k])
+                        {
+                         temp=a[k];
+                         a[k]=a[i];
+                         a[i]=temp;
+                        }
+                }
+
+        }
+printf("\nThe Sorted array in descending order is : \n");
+for(i=0;i<n;i++)
+{
+	printf(" %d ",a[i]);
+}
+return 0;
+}
+
+int main()
+{
+	int pid;
+	pid=fork();
+	if(pid<0)
+	{
+		printf("\nInvalid Process");
+	}
+	else if(pid==0)
+	{
+		printf("Child Process");
+		printf("Child Pid : %d", getpid());
+		wait(NULL);
+		// asc();
+		execlp("p.out","a3.c",asc(),(char*)0);
+	}
+	else if(pid>0)
+	{
+		printf("Parent Process");
+		printf("\nParent Pid = %d",getpid());
+		wait(NULL);
+		dsc();
+	}
+}
+
+
+OUTPUT
+
+Parent Process
+Child ProcessChild Pid : 1265
+Enter the no of Array elements10
+
+Enter the Array Elements 7 4 5 8 9 6 2 1 3 11
+
+The Sorted array in ascending order is :
+ 1  2  3  4  5  6  7  8  9  11 Parent Pid = 1264
+Enter the no of Array elements
+7 4 5 8 9 6 2 1 3 11
+
+Enter the Array Elements
+
+The Sorted array in descending order is :
+ 9  8  6  5  4  2  1
