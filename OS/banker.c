@@ -118,7 +118,6 @@ void request(int all[][40],int need[][40],int avail [],int p,int r){
 	printf("\n\nENTER REQUEST:: ");
 	for(i=0;i<r;i++){
 		printf("\nENTER R%d: ",i);
-		
 		scanf("%d",&req[i]);
 	}
 	for(i=0;i<r;i++){
