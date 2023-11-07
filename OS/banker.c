@@ -197,3 +197,231 @@ int main(){
 		}
 	}
 }
+
+
+
+/*
+OUTPUT :
+
+                        !!BANKERS ALGORITHM!!
+
+                1.ACCEPT
+
+                2.DISPLAY
+
+                3.SAFE SEQUENCE
+
+                4.ENTER REQUEST
+
+                5.QUIT
+
+ENTER YOUR CHOICE::1
+
+ENTER NO. OF PROCESSES:: 5
+
+ENTER NO. OF RESOURCES:: 3
+
+
+ENTER ALLOCATION MATRIX::
+ENTER RESOURCE R0 FOR PROCESS P0 : 0
+
+ENTER RESOURCE R1 FOR PROCESS P0 : 1
+
+ENTER RESOURCE R2 FOR PROCESS P0 : 0
+
+ENTER RESOURCE R0 FOR PROCESS P1 : 2
+
+ENTER RESOURCE R1 FOR PROCESS P1 : 0
+
+ENTER RESOURCE R2 FOR PROCESS P1 : 0
+
+ENTER RESOURCE R0 FOR PROCESS P2 : 3
+
+ENTER RESOURCE R1 FOR PROCESS P2 : 0
+
+ENTER RESOURCE R2 FOR PROCESS P2 : 2
+
+ENTER RESOURCE R0 FOR PROCESS P3 : 2
+
+ENTER RESOURCE R1 FOR PROCESS P3 : 1
+
+ENTER RESOURCE R2 FOR PROCESS P3 : 1
+
+ENTER RESOURCE R0 FOR PROCESS P4 : 0
+
+ENTER RESOURCE R1 FOR PROCESS P4 : 0
+
+ENTER RESOURCE R2 FOR PROCESS P4 : 2
+
+
+ENTER MAXIMUM MATRIX::
+ENTER RESOURCE R0 FOR PROCESS P0 : 7
+
+ENTER RESOURCE R1 FOR PROCESS P0 : 5
+
+ENTER RESOURCE R2 FOR PROCESS P0 : 3
+
+ENTER RESOURCE R0 FOR PROCESS P1 : 3
+
+ENTER RESOURCE R1 FOR PROCESS P1 : 2
+
+ENTER RESOURCE R2 FOR PROCESS P1 : 2
+
+ENTER RESOURCE R0 FOR PROCESS P2 : 9
+
+ENTER RESOURCE R1 FOR PROCESS P2 : 0
+
+ENTER RESOURCE R2 FOR PROCESS P2 : 2
+
+ENTER RESOURCE R0 FOR PROCESS P3 : 2
+
+ENTER RESOURCE R1 FOR PROCESS P3 : 2
+
+ENTER RESOURCE R2 FOR PROCESS P3 : 2
+
+ENTER RESOURCE R0 FOR PROCESS P4 : 4
+
+ENTER RESOURCE R1 FOR PROCESS P4 : 3
+
+ENTER RESOURCE R2 FOR PROCESS P4 : 3
+
+
+ENTER TATAL NO. OF RESOURCES:
+
+ENTER R0: 10
+
+ENTER R1: 5
+
+ENTER R2: 7
+
+
+                        !!BANKERS ALGORITHM!!
+
+                1.ACCEPT
+
+                2.DISPLAY
+
+                3.SAFE SEQUENCE
+
+                4.ENTER REQUEST
+
+                5.QUIT
+
+ENTER YOUR CHOICE::2
+
+
+ALLOCATION MATRIX::
+                R0      R1      R2
+
+        P0      0       1       0
+
+        P1      2       0       0
+
+        P2      3       0       2
+
+        P3      2       1       1
+
+        P4      0       0       2
+
+MAXIMUM MATRIX::
+                R0      R1      R2
+
+        P0      7       5       3
+
+        P1      3       2       2
+
+        P2      9       0       2
+
+        P3      2       2       2
+
+        P4      4       3       3
+
+NEED MATRIX::
+                R0      R1      R2
+
+        P0      7       4       3
+
+        P1      1       2       2
+
+        P2      6       0       0
+
+        P3      0       1       1
+
+        P4      4       3       1
+
+TOTAL RESOURCES ARE:
+                R0      R1      R2
+
+                10      5       7
+
+TOTAL AVAILABLE RESOURCES ARE:
+                R0      R1      R2
+
+                3       3       2
+
+                        !!BANKERS ALGORITHM!!
+
+                1.ACCEPT
+
+                2.DISPLAY
+
+                3.SAFE SEQUENCE
+
+                4.ENTER REQUEST
+
+                5.QUIT
+
+ENTER YOUR CHOICE::3
+
+
+SYSTEM IS IN SAFE SEQUENCE & SAFE SEQUENCE IS::
+
+        P1      P3      P4      P0      P2
+
+
+                        !!BANKERS ALGORITHM!!
+
+                1.ACCEPT
+
+                2.DISPLAY
+
+                3.SAFE SEQUENCE
+
+                4.ENTER REQUEST
+
+                5.QUIT
+
+ENTER YOUR CHOICE::4
+
+
+ENTER PROCESS NO.:: 1
+
+
+ENTER REQUEST::
+ENTER R0: 1
+
+ENTER R1: 2
+
+ENTER R2: 2
+
+
+SYSTEM IS IN SAFE SEQUENCE & SAFE SEQUENCE IS::
+
+        P1      P3      P4      P0      P2
+
+REQUEST SHOULD BE GRANTED
+
+                        !!BANKERS ALGORITHM!!
+
+                1.ACCEPT
+
+                2.DISPLAY
+
+                3.SAFE SEQUENCE
+
+                4.ENTER REQUEST
+
+                5.QUIT
+
+ENTER YOUR CHOICE::5
+*/
